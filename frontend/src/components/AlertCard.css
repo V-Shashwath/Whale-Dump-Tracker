@@ -1,0 +1,284 @@
+.alert-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.6) 100%);
+  border-radius: 16px;
+  padding: 1.75rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  overflow: hidden;
+  animation: cardSlideIn 0.6s ease-out;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.alert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.alert-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(167, 139, 250, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+.alert-card:hover::before {
+  opacity: 1;
+}
+
+.alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.alert-badges {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.chain-badge,
+.severity-badge,
+.type-badge {
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.chain-badge:hover,
+.severity-badge:hover,
+.type-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.chain-badge {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.3) 0%, rgba(59, 130, 246, 0.2) 100%);
+}
+
+.chain-badge[style*="background: rgb(98, 126, 234)"],
+.chain-badge[style*="background: #627eea"] {
+  background: linear-gradient(135deg, rgba(98, 126, 234, 0.4) 0%, rgba(79, 70, 229, 0.2) 100%) !important;
+}
+
+.severity-badge {
+  font-weight: 800;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.severity-badge[style*="red"],
+.severity-badge[style*="#ef4444"] {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.4) 0%, rgba(220, 38, 38, 0.2) 100%);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.severity-badge[style*="orange"],
+.severity-badge[style*="#f59e0b"] {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.4) 0%, rgba(217, 119, 6, 0.2) 100%);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+}
+
+.severity-badge[style*="green"],
+.severity-badge[style*="#10b981"] {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.4) 0%, rgba(5, 150, 105, 0.2) 100%);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.type-badge {
+  background: linear-gradient(135deg, rgba(148, 163, 184, 0.3) 0%, rgba(100, 116, 139, 0.2) 100%);
+}
+
+.alert-time {
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.alert-time:hover {
+  background: rgba(167, 139, 250, 0.1);
+  color: #a78bfa;
+}
+
+.alert-body {
+  margin-bottom: 1.25rem;
+}
+
+.alert-token {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.alert-summary {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.5);
+  border-left: 3px solid #a78bfa;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.alert-summary:hover {
+  background: rgba(15, 23, 42, 0.7);
+  border-left-color: #60a5fa;
+}
+
+.alert-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0.3) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.detail-item:hover {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.3);
+  transform: translateY(-2px);
+}
+
+.detail-label {
+  font-size: 0.7rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.detail-value {
+  font-size: 1rem;
+  color: #e0e0e0;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+.wallet-address {
+  font-size: 0.85rem;
+  color: #60a5fa;
+  word-break: break-all;
+}
+
+.alert-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.25rem;
+  gap: 0.75rem;
+}
+
+.action-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+.action-btn:hover::before {
+  left: 100%;
+}
+
+.action-btn:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .alert-card {
+    padding: 1.25rem;
+  }
+  
+  .alert-token {
+    font-size: 1.4rem;
+  }
+  
+  .alert-details {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    match /alerts/{alertId} {
+      allow read: if true;
+      
+      allow create: if request.auth != null && isValidAlert();
+      
+      allow update, delete: if request.auth != null && 
+        request.auth.token.admin == true;
+      
+      function isValidAlert() {
+        let data = request.resource.data;
+        return data.keys().hasAll(['chain', 'token', 'alertType', 'severity', 'timestamp'])
+          && data.chain in ['ETH', 'SOL', 'BSC']
+          && data.alertType in ['whale', 'dump']
+          && data.severity in ['high', 'medium', 'low']
+          && data.aiSummary is string
+          && data.aiSummary.size() > 0
+          && data.aiSummary.size() < 500;
+      }
+    }
+    
+    match /monitoredTokens/{tokenId} {
+      allow read: if true;
+      
+      allow create, update, delete: if request.auth != null && 
+        request.auth.token.admin == true;
+      
+      allow list: if true;
+    }
+    
+    match /users/{userId} {
+      allow read, write: if request.auth != null && 
+        request.auth.uid == userId;
+      
+      allow create: if request.auth != null;
+    }
+    
+    match /analytics/{docId} {
+      allow read: if request.auth != null;
+      
+      allow write: if request.auth != null && 
+        request.auth.token.admin == true;
+    }
+  }
+}
