@@ -229,7 +229,9 @@ The Firestore security rules implement defense-in-depth:
 
 ### Live Demo Video
 
-<video controls src="Screen Recording 2025-10-18 180650.mp4" title="Title"></video>
+<!-- <video controls src="Screen Recording 2025-10-18 180650.mp4" title="Title"></video> -->
+Watch the full demo video here:  
+[📺 Click to Watch on Google Drive](https://drive.google.com/file/d/1Vh9zSNw61uKxTWgI7YXOuWFlZqIlNSC8/view?usp=sharing)
 
 
 ### Screenshots
