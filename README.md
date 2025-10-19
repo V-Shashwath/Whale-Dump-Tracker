@@ -246,7 +246,6 @@ The Firestore security rules implement defense-in-depth:
 ![alt text](image-2.png)
 
 #### Mobile View - Responsive Layout
-
 ![alt text](image.png)
 
 #### Filter System
